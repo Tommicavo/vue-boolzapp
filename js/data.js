@@ -1,4 +1,5 @@
 const data = {
+
   user: {
     name: 'Nome Utente',
     avatar: '_io'
@@ -197,4 +198,5 @@ const data = {
   ]
 
 }
+
 
