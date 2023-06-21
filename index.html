@@ -47,13 +47,14 @@
                 <div class="searchContacts p-2">
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" class="form-control"
+                        v-model="searchedContact" placeholder="Cerca o inizia una nuova chat">
                     </div>
                 </div>
                 <div class="contacts p-2">
                     <ul class="m-0 p-0">
                         <li class="d-flex"
-                        v-for="contact in contacts" @click="changeChat(contact.id)">
+                        v-for="contact in filteredContacts" @click="changeChat(contact.id)">
                             <div class="contactLeft p-2">
                                 <div class="imgContainer"><img class="img-fluid"
                                     :src='"img/avatar" + contact.avatar + ".jpg"' :alt="contact.name">

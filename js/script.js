@@ -4,6 +4,7 @@ const app = Vue.createApp({
     data() {
         return{
             newMessage: "",
+            searchedContact: "",
             user: {
             name: 'Nome Utente',
             avatar: '_io'
@@ -211,6 +212,11 @@ const app = Vue.createApp({
         },
         nextMsgId() {
             return this.openedChat.length + 1;
+        },
+        filteredContacts() {
+            return this.contacts.filter(contact => {
+                if (contact.name.toLowerCase().includes(this.searchedContact.toLowerCase())) return true;
+            });
         }
     },
     methods: {
