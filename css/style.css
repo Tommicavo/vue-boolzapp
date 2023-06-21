@@ -25,6 +25,11 @@ img{
     border-radius: 50%;
 }
 
+main ul>*{
+    display: flex;
+    flex-direction: column;
+} 
+
 /* Containers */
 .bzContainer{
     max-width: 1200px;
@@ -86,6 +91,22 @@ img{
 /* Chats */
 .chatsContainer{
     flex-basis: 65%;
+}
+
+.message{
+    padding: 1rem;
+    border-radius: 10px;
+    max-width: calc((100% / 2) - 10px);
+}
+
+.sent{
+    align-self: flex-end;
+    background-color: #D4F8B9;
+}
+
+.received{
+    align-self: flex-start;
+    background-color: white;
 }
 
 /* Font Awesome */
