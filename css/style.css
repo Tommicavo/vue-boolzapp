@@ -98,7 +98,7 @@ main ul>*{
 }
 
 .message{
-    padding: 1rem;
+    padding: 10px;
     border-radius: 10px;
     max-width: calc((100% / 2) - 10px);
     margin-top: 5px;

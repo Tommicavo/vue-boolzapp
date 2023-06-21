@@ -3,6 +3,7 @@ console.log("js ok", Vue);
 const app = Vue.createApp({
     data() {
         return{
+            newMessage: "",
             user: {
             name: 'Nome Utente',
             avatar: '_io'
@@ -200,6 +201,18 @@ const app = Vue.createApp({
             }]
         }
     },
+    computed: {
+        openedChat() {
+            let opened = null;
+            this.contacts.forEach(contact => {
+                if (contact.visible) opened = contact.messages;
+            });
+            return opened;
+        },
+        nextMsgId() {
+            return this.openedChat.length + 1;
+        }
+    },
     methods: {
         initVisibility() {
             this.contacts.forEach(contact => {
@@ -211,6 +224,41 @@ const app = Vue.createApp({
             this.contacts.forEach(contact => {
                 if (contact.id !== targetId) contact.visible = false;
                 else contact.visible = true;
+            });
+        },
+        getCurrentDate() {
+            const now = new Date();
+            console.log("now: ", now);
+        },
+        getCurrentDate() {
+            const now = new Date();
+
+            let day = now.getDate();
+            if (day < 9) day = "0" + day;
+            
+            let month = now.getMonth();
+            if (month < 9) month = "0" + month;
+            
+            const year = now.getFullYear();
+            
+            let hour = now.getHours();
+            if (hour < 9) hour = "0" + hour;
+            
+            let minutes = now.getMinutes();
+            if (minutes < 9) minutes = "0" + minutes;
+            
+            let seconds = now.getSeconds();
+            if (seconds < 9) minutes = "0" + seconds;
+            
+            return `${day}/${month}/${year} ${hour}:${minutes}:${seconds}`;
+        },
+        sendMsg() {
+            if (!this.newMessage.trim()) return;
+            this.openedChat.push({
+                id: this.nextMsgId,
+                date: this.getCurrentDate(),
+                message: this.newMessage,
+                status: "sent"
             });
         }
     },
