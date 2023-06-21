@@ -252,6 +252,16 @@ const app = Vue.createApp({
             
             return `${day}/${month}/${year} ${hour}:${minutes}:${seconds}`;
         },
+        receiveMsg() {
+            setTimeout(() => {
+                this.openedChat.push({
+                    id: this.nextMsgId,
+                    date: this.getCurrentDate(),
+                    message: "ok",
+                    status: "received"
+            })
+            }, 1000);
+        },
         sendMsg() {
             if (!this.newMessage.trim()) return;
             this.openedChat.push({
@@ -260,6 +270,8 @@ const app = Vue.createApp({
                 message: this.newMessage,
                 status: "sent"
             });
+            this.newMessage = "";
+            this.receiveMsg();
         }
     },
     mounted() {
