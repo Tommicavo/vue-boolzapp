@@ -36,6 +36,11 @@ img{
     background-color: var(--colorMenu);
 }
 /* Contacts */
+.contacts{
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: white;
+}
 
 .notify{
     background-color: var(--colorNofity);
@@ -46,6 +51,25 @@ img{
     height: 50px;
     border-radius: 50%;
     background-color: white;
+}
+
+.user{
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.contactLeft{
+    flex-basis: 20%;
+}
+
+.contactMiddle{
+    flex-basis: 60%;
+}
+
+.contactRight{
+    flex-basis: 20%;
+    font-size: 12px;
+    color: gray;
 }
 
 /* Chats */

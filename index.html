@@ -21,7 +21,7 @@
     </head>
     <body>
         <div class="bzContainer d-flex">
-            <div class="contactsContainer">
+            <div class="contactsContainer d-flex flex-column">
                 <div class="usernameContainer d-flex justify-content-between align-items-center p-2">
                     <div class="userInfo d-flex align-items-center gap-3">
                         <div class="imgContainer"><img class="img-fluid" src="img/avatar_io.jpg" alt="avatar_io"></div>
@@ -48,7 +48,23 @@
                         <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
                     </div>
                 </div>
-                <div class="contacts"></div>
+                <div class="contacts p-2">
+                    <ul class="m-0 p-0">
+                        <li class="d-flex">
+                            <div class="contactLeft p-2">
+                                <div class="imgContainer"><img class="img-fluid" src="img/avatar_io.jpg" alt="avatar_io"></div>
+                            </div>
+                            <div class="contactMiddle p-2">
+                                <div class="user">Michele</div>
+                                <div class="lastMsg">Ultimo messaggio</div>
+                            </div>
+                            <div class="contactRight p-2 text-end">
+                                <div class="lastDate">10/01/2020</div>
+                                <div class="lastHour">16:15:22</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="chats"></div>
         </div>
