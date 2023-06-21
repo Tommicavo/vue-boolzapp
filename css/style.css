@@ -6,6 +6,10 @@
 }
 
 /* Generics */
+header, footer{
+    background-color: var(--colorMenu);
+}
+
 body{
     background: linear-gradient(#009688 0 20%, #DBDBD3 20% 100%);
     height: calc(100vh - var(--margin));
@@ -20,7 +24,7 @@ img{
     max-width: 1200px;
     height: calc(100% - var(--margin));
     margin: var(--margin) auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .imgContainer{
@@ -30,6 +34,7 @@ img{
 
 .contactsContainer{
     flex-basis: 35%;
+    border-right: 1px solid #009688;
 }
 
 .usernameContainer, .searchContacts{
@@ -73,13 +78,14 @@ img{
 }
 
 /* Chats */
-.chats{
+.chatsContainer{
     flex-basis: 65%;
 }
 
 /* Font Awesome */
 .fa-solid{
-    font-size: 1rem;
+    font-size: 25px;
+    color: gray;
 }
 
 .fa-solid.fa-bell-slash{
