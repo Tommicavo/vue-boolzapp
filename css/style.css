@@ -1,0 +1,17 @@
+/* Root */
+:root{
+    --margin: 20px;
+}
+
+/* Generics */
+body{
+    background: linear-gradient(#009688 0 20%, #DBDBD3 20% 100%);
+    height: calc(100vh - var(--margin));
+}
+
+.bzContainer{
+    max-width: 1200px;
+    height: calc(100% - var(--margin));
+    margin: var(--margin) auto;
+    border: 1px solid black;
+}
