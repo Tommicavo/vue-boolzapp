@@ -58,6 +58,10 @@ main ul>*{
     background-color: white;
 }
 
+.contacts ul>*{
+    cursor: pointer;
+}
+
 .notify{
     background-color: var(--colorNofity);
 }
@@ -97,6 +101,7 @@ main ul>*{
     padding: 1rem;
     border-radius: 10px;
     max-width: calc((100% / 2) - 10px);
+    margin-top: 5px;
 }
 
 .sent{

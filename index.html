@@ -53,7 +53,7 @@
                 <div class="contacts p-2">
                     <ul class="m-0 p-0">
                         <li class="d-flex"
-                        v-for="contact in contacts">
+                        v-for="contact in contacts" @click="changeChat(contact.id)">
                             <div class="contactLeft p-2">
                                 <div class="imgContainer"><img class="img-fluid"
                                     :src='"img/avatar" + contact.avatar + ".jpg"' :alt="contact.name">
@@ -90,11 +90,8 @@
                 </header>
                 <main class="p-5">
                     <ul class="list-unstyled">
-                        <li>
-                            <div class="message sent"> Lorem </div>
-                        </li>
                         <li v-for="contact in contacts">
-                            <div v-for="msg in contact.messages"
+                            <div v-for="msg in contact.messages"  v-if="contact.visible"
                             class="message" :class="msg.status === 'sent' ? 'sent' : 'received'"> {{ msg.message }} </div>
                         </li>
                     </ul>

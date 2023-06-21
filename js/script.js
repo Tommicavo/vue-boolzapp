@@ -200,7 +200,22 @@ const app = Vue.createApp({
             }]
         }
     },
-    computed: {
+    methods: {
+        initVisibility() {
+            this.contacts.forEach(contact => {
+                contact.visible = false;
+            })
+            this.contacts[0].visible = true;
+        },
+        changeChat(targetId) {
+            this.contacts.forEach(contact => {
+                if (contact.id !== targetId) contact.visible = false;
+                else contact.visible = true;
+            });
+        }
+    },
+    mounted() {
+        this.initVisibility();
     }
 });
 
