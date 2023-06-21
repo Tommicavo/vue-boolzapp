@@ -1,6 +1,8 @@
 /* Root */
 :root{
     --margin: 20px;
+    --colorNofity: #8EDAFC;
+    --colorMenu: lightgray;
 }
 
 /* Generics */
@@ -9,9 +11,57 @@ body{
     height: calc(100vh - var(--margin));
 }
 
+img{
+    border-radius: 50%;
+}
+
+/* Containers */
 .bzContainer{
     max-width: 1200px;
     height: calc(100% - var(--margin));
     margin: var(--margin) auto;
     border: 1px solid black;
 }
+
+.imgContainer{
+    width: 50px;
+    height: 50px;
+}
+
+.contactsContainer{
+    flex-basis: 35%;
+}
+
+.usernameContainer, .searchContacts{
+    background-color: var(--colorMenu);
+}
+/* Contacts */
+
+.notify{
+    background-color: var(--colorNofity);
+}
+
+.bellCircle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+/* Chats */
+.chats{
+    flex-basis: 65%;
+}
+
+/* Font Awesome */
+.fa-solid{
+    font-size: 1rem;
+}
+
+.fa-solid.fa-bell-slash{
+    font-size: 1.5rem;
+    color: var(--colorNofity);
+}
+
+
+

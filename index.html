@@ -20,8 +20,37 @@
         <script defer src="js/script.js"></script>
     </head>
     <body>
-        <div class="bzContainer">
-            
+        <div class="bzContainer d-flex">
+            <div class="contactsContainer">
+                <div class="usernameContainer d-flex justify-content-between align-items-center p-2">
+                    <div class="userInfo d-flex align-items-center gap-3">
+                        <div class="imgContainer"><img class="img-fluid" src="img/avatar_io.jpg" alt="avatar_io"></div>
+                        <div class="user">Nome Utente</div>
+                    </div>
+                    <div class="userNav d-flex gap-3">
+                        <a href="#"><i class="fa-solid fa-circle-notch"></i></a>
+                        <a href="#"><i class="fa-solid fa-message"></i></a>
+                        <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    </div>
+                </div>
+                <div class="notify d-flex p-2 gap-3">
+                    <div class="bellIcon">
+                        <div class="bellCircle d-flex justify-content-center align-items-center"><i class="fa-solid fa-bell-slash"></i></div>
+                    </div>
+                    <div class="bellInfo">
+                        <div>Ricevi notifihce di nuovi messaggi</div>
+                        <div><a href="#">Attiva notifiche desktop</a></div>
+                    </div>
+                </div>
+                <div class="searchContacts p-2">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                </div>
+                <div class="contacts"></div>
+            </div>
+            <div class="chats"></div>
         </div>
     </body>
 </html>
