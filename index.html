@@ -25,7 +25,7 @@
                 <div class="usernameContainer d-flex justify-content-between align-items-center p-3">
                     <div class="userInfo d-flex align-items-center gap-3">
                         <div class="imgContainer">
-                            <img class="img-fluid" :src='"img/avatar" + user.avatar + ".jpg"' :alt="user.name">
+                            <img class="img-fluid" :src="renderPic(user)" :alt="user.name">
                         </div>
                         <div class="user"> {{ user.name }} </div>
                     </div>
@@ -57,7 +57,7 @@
                         v-for="contact in filteredContacts" @click="changeChat(contact.id)">
                             <div class="contactLeft p-2">
                                 <div class="imgContainer"><img class="img-fluid"
-                                    :src='"img/avatar" + contact.avatar + ".jpg"' :alt="contact.name">
+                                    :src="renderPic(contact)" :alt="contact.name">
                                 </div>
                             </div>
                             <div class="contactMiddle p-2">
@@ -76,7 +76,7 @@
                     <div class="chatTopLeft d-flex justify-content-between align-items-center p-3">
                         <div v-for="contact in contacts" class="activeChat">
                             <div v-if="contact.visible" class="d-flex gap-2">
-                                <div class="imgContainer"><img class="img-fluid" :src='"img/avatar" + contact.avatar + ".jpg"' :alt="contact.name"></div>
+                                <div class="imgContainer"><img class="img-fluid" :src="renderPic(contact)" :alt="contact.name"></div>
                                 <div>
                                     <div class="user"> {{ contact.name }} </div>
                                     <div class="lastAccess">
@@ -97,7 +97,7 @@
                     <ul class="list-unstyled">
                         <li v-for="contact in contacts">
                             <div v-for="msg in contact.messages"  v-if="contact.visible"
-                            class="message" :class="msg.status === 'sent' ? 'sent' : 'received'">
+                            class="message" :class="msg.status">
                                 <span class="msgText"> {{ msg.message }} </span>
                                 <span class="msgDate"> {{ shortDate(msg.date) }} </span>
                             </div>

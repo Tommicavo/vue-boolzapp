@@ -3,6 +3,12 @@ console.log("js ok", Vue);
 const app = Vue.createApp({
     data() {
         return{
+            gptData: {
+                apiUrl: "https://api.openai.com/v1/chat/completions",
+                model: "gpt-3.5-turbo",
+                apiKey: "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",
+                temperature: 0.5
+            },
             newMessage: "",
             searchedContact: "",
             user: {
@@ -269,18 +275,35 @@ const app = Vue.createApp({
             
             return `${day}/${month}/${year} ${hour}:${minutes}:${seconds}`;
         },
-        receiveMsg() {
-            setTimeout(() => {
-                this.openedChat.push({
-                    id: this.nextMsgId,
-                    date: this.getCurrentDate(),
-                    message: "ok",
-                    status: "received"
+        async getResponse(inputMsg) {
+            const response = await fetch(this.gptData.apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${this.gptData.apiKey}`
+                },
+                body: JSON.stringify({
+                    model: this.gptData.model,
+                    messages: [{
+                        role: "user",
+                        content: inputMsg
+                    }],
+                    temperature: this.gptData.temperature
+                })
             })
-            }, 1000);
+            const data = await response.json();
+            const responseMsg = data.choices[0].message.content;
+
+            this.openedChat.push({
+                id: this.nextMsgId,
+                date: this.getCurrentDate(),
+                message: responseMsg,
+                status: "received"
+        })
         },
         sendMsg() {
             if (!this.newMessage.trim()) return;
+            const messageSent = this.newMessage;
             this.openedChat.push({
                 id: this.nextMsgId,
                 date: this.getCurrentDate(),
@@ -288,10 +311,14 @@ const app = Vue.createApp({
                 status: "sent"
             });
             this.newMessage = "";
-            this.receiveMsg();
+            // this.receiveMsg();
+            this.getResponse(messageSent);
         },
         shortDate(longDate) {
             return longDate.substring(11, 16);
+        },
+        renderPic({avatar}) {
+            return `img/avatar${avatar}.jpg`;
         }
     },
     mounted() {
