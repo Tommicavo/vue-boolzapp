@@ -17,6 +17,7 @@
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
         <!-- Script -->
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
         <script defer src="js/script.js"></script>
     </head>
     <body>
@@ -97,9 +98,17 @@
                     <ul class="list-unstyled">
                         <li v-for="contact in contacts">
                             <div v-for="msg in contact.messages"  v-if="contact.visible"
-                            class="message" :class="msg.status">
-                                <span class="msgText"> {{ msg.message }} </span>
-                                <span class="msgDate"> {{ shortDate(msg.date) }} </span>
+                            class="message d-flex justify-content-between" :class="msg.status">
+                                <div class="msgText"> {{ msg.message }} </div>
+                                <div class="msgTasks">
+                                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-chevron-down btn-delete"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><button class="btn">Message Info</button></li>
+                                        <li class="dropdown-item"><button class="btn" @click="deleteMsg(contact.id, msg.id)">Delete Message</button></li>
+                                    </ul>
+
+                                    <span class="msgDate"> {{ shortDate(msg.date) }} </span>
+                                </div>
                             </div>
                         </li>
                     </ul>

@@ -122,8 +122,15 @@ main ul>*{
     font-size: 10px;
     color: gray;
     position: absolute;
-    bottom: 5px;
     right: 5px;
+    bottom: 5px;
+}
+
+.fa-solid.btn-delete{
+    font-size: 16px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
 }
 
 /* Font Awesome */
@@ -140,4 +147,12 @@ main ul>*{
 .btn.btn-send, .bnt.btn-send:hover{
     padding: 5px 10px;
     border: 1px solid gray;
+}
+
+.btn.dropdown-toggle{
+    border: 0;
+}
+
+.btn.dropdown-toggle::after{
+    display: none;
 }

@@ -325,6 +325,13 @@ const app = Vue.createApp({
         },
         getLastMsgDate(contact) {
             return contact.messages[contact.messages.length - 1].date;
+        },
+        deleteMsg(contactId, msgId) {
+            this.contacts.forEach(contact => {
+                if (contact.id === contactId) {
+                    contact.messages = contact.messages.filter(msg => msg.id !== msgId);
+                }
+            })
         }
     },
     mounted() {
