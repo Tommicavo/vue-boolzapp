@@ -6,7 +6,7 @@ const app = Vue.createApp({
             gptData: {
                 apiUrl: "https://api.openai.com/v1/chat/completions",
                 model: "gpt-3.5-turbo",
-                apiKey: "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",
+                apiKey: "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",
                 temperature: 0.5
             },
             newMessage: "",
@@ -319,6 +319,12 @@ const app = Vue.createApp({
         },
         renderPic({avatar}) {
             return `img/avatar${avatar}.jpg`;
+        },
+        getLastMsg(contact) {
+            return contact.messages[contact.messages.length - 1].message;
+        },
+        getLastMsgDate(contact) {
+            return contact.messages[contact.messages.length - 1].date;
         }
     },
     mounted() {

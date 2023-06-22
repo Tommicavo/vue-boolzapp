@@ -62,10 +62,10 @@
                             </div>
                             <div class="contactMiddle p-2">
                                 <div class="user"> {{ contact.name }} </div>
-                                <div class="lastMsg"> {{ contact.messages[contact.messages.length - 1].message }} </div>
+                                <div class="lastMsg"> {{ getLastMsg(contact) }} </div>
                             </div>
                             <div class="contactRight p-2 text-end">
-                                <div class="lastDate"> {{ contact.messages[contact.messages.length - 1].date }} </div>
+                                <div class="lastDate"> {{ getLastMsgDate(contact) }} </div>
                             </div>
                         </li>
                     </ul>
