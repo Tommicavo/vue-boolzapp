@@ -217,6 +217,17 @@ const app = Vue.createApp({
             return this.contacts.filter(contact => {
                 if (contact.name.toLowerCase().includes(this.searchedContact.toLowerCase())) return true;
             });
+        },
+        writingMsg() {
+            if (!this.newMessage.length) isWriting = false;
+            else isWriting = true;
+            return isWriting;
+        },
+        lastMsgDate() {
+            return this.openedChat[this.openedChat.length - 1].date;
+        },
+        lastSeen() {
+            return this.lastMsgDate.substring(11, 16);
         }
     },
     methods: {
@@ -240,21 +251,21 @@ const app = Vue.createApp({
             const now = new Date();
 
             let day = now.getDate();
-            if (day < 9) day = "0" + day;
+            if (day < 10) day = "0" + day;
             
-            let month = now.getMonth();
-            if (month < 9) month = "0" + month;
+            let month = now.getMonth() + 1;
+            if (month < 10) month = "0" + month;
             
             const year = now.getFullYear();
             
             let hour = now.getHours();
-            if (hour < 9) hour = "0" + hour;
+            if (hour < 10) hour = "0" + hour;
             
             let minutes = now.getMinutes();
-            if (minutes < 9) minutes = "0" + minutes;
+            if (minutes < 10) minutes = "0" + minutes;
             
             let seconds = now.getSeconds();
-            if (seconds < 9) minutes = "0" + seconds;
+            if (seconds < 10) seconds = "0" + seconds;
             
             return `${day}/${month}/${year} ${hour}:${minutes}:${seconds}`;
         },
@@ -278,6 +289,9 @@ const app = Vue.createApp({
             });
             this.newMessage = "";
             this.receiveMsg();
+        },
+        shortDate(longDate) {
+            return longDate.substring(11, 16);
         }
     },
     mounted() {

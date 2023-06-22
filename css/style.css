@@ -98,10 +98,13 @@ main ul>*{
 }
 
 .message{
-    padding: 10px;
+    padding: 5px 10px;
     border-radius: 10px;
     max-width: calc((100% / 2) - 10px);
     margin-top: 5px;
+    position: relative;
+    padding-bottom: 15px;
+    min-width: 100px;
 }
 
 .sent{
@@ -112,6 +115,14 @@ main ul>*{
 .received{
     align-self: flex-start;
     background-color: white;
+}
+
+.msgDate{
+    font-size: 10px;
+    color: gray;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 }
 
 /* Font Awesome */
@@ -125,3 +136,7 @@ main ul>*{
     color: var(--colorNofity);
 }
 
+.btn.btn-send, .bnt.btn-send:hover{
+    padding: 5px 10px;
+    border: 1px solid gray;
+}
