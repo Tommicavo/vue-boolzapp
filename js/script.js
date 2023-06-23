@@ -3,10 +3,11 @@ console.log("js ok", Vue);
 const app = Vue.createApp({
     data() {
         return{
+            noneVisible: true,
             gptData: {
                 apiUrl: "https://api.openai.com/v1/chat/completions",
                 model: "gpt-3.5-turbo",
-                apiKey: "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",
+                apiKey: "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",
                 temperature: 0.5
             },
             newMessage: "",
@@ -241,9 +242,9 @@ const app = Vue.createApp({
             this.contacts.forEach(contact => {
                 contact.visible = false;
             })
-            this.contacts[0].visible = true;
         },
         changeChat(targetId) {
+            if (this.noneVisible) this.noneVisible = false;
             this.contacts.forEach(contact => {
                 if (contact.id !== targetId) contact.visible = false;
                 else contact.visible = true;

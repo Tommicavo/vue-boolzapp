@@ -98,6 +98,14 @@ main ul>*{
     flex-basis: 65%;
 }
 
+.startingImage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F9FAFB;
+    height: 100%;
+}
+
 .message{
     padding: 5px 10px;
     border-radius: 10px;
