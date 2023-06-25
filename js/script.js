@@ -3,11 +3,11 @@ console.log("js ok", Vue);
 const app = Vue.createApp({
     data() {
         return{
-            noneVisible: true,
+            currentId: null, 
             gptData: {
                 apiUrl: "https://api.openai.com/v1/chat/completions",
                 model: "gpt-3.5-turbo",
-                apiKey: "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",
+                apiKey: "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",
                 temperature: 0.5
             },
             newMessage: "",
@@ -210,15 +210,14 @@ const app = Vue.createApp({
         }
     },
     computed: {
-        openedChat() {
-            let opened = null;
-            this.contacts.forEach(contact => {
-                if (contact.visible) opened = contact.messages;
-            });
-            return opened;
+        notVisible() {
+            return this.currentId === -1;
         },
-        nextMsgId() {
-            return this.openedChat.length + 1;
+        currentContact() {
+            return this.contacts.find(contact => contact.id === this.currentId);
+        },
+        openedChat() {
+            return this.currentContact.messages;
         },
         filteredContacts() {
             return this.contacts.filter(contact => {
@@ -226,33 +225,15 @@ const app = Vue.createApp({
             });
         },
         writingMsg() {
-            if (!this.newMessage.length) isWriting = false;
-            else isWriting = true;
-            return isWriting;
+            return this.newMessage.length;
         },
-        lastMsgDate() {
-            return this.openedChat[this.openedChat.length - 1].date;
-        },
-        lastSeen() {
-            return this.lastMsgDate.substring(11, 16);
+        nextMsgId() {
+            return this.openedChat.length + 1;
         }
     },
     methods: {
-        initVisibility() {
-            this.contacts.forEach(contact => {
-                contact.visible = false;
-            })
-        },
-        changeChat(targetId) {
-            if (this.noneVisible) this.noneVisible = false;
-            this.contacts.forEach(contact => {
-                if (contact.id !== targetId) contact.visible = false;
-                else contact.visible = true;
-            });
-        },
-        getCurrentDate() {
-            const now = new Date();
-            console.log("now: ", now);
+        setCurrentId(targetId) {
+            this.currentId = targetId;
         },
         getCurrentDate() {
             const now = new Date();
@@ -312,11 +293,7 @@ const app = Vue.createApp({
                 status: "sent"
             });
             this.newMessage = "";
-            // this.receiveMsg();
             this.getResponse(messageSent);
-        },
-        shortDate(longDate) {
-            return longDate.substring(11, 16);
         },
         renderPic({avatar}) {
             return `img/avatar${avatar}.jpg`;
@@ -327,6 +304,12 @@ const app = Vue.createApp({
         getLastMsgDate(contact) {
             return contact.messages[contact.messages.length - 1].date;
         },
+        shortDate(msg) {
+            return msg.date.substring(11, 16);
+        },
+        lastSeen(contact) {
+            return this.getLastMsgDate(contact).substring(11, 16);
+        },
         deleteMsg(contactId, msgId) {
             this.contacts.forEach(contact => {
                 if (contact.id === contactId) {
@@ -335,8 +318,8 @@ const app = Vue.createApp({
             })
         }
     },
-    mounted() {
-        this.initVisibility();
+    created() {
+        this.currentId = -1;
     }
 });
 
