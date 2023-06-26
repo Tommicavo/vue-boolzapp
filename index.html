@@ -104,7 +104,7 @@
                                         <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-chevron-down btn-delete"></i></button>
                                         <ul class="dropdown-menu">
                                             <li class="dropdown-item"><button class="btn">Message Info</button></li>
-                                            <li class="dropdown-item"><button class="btn" @click="deleteMsg(currentContact.id, msg.id)">Delete Message</button></li>
+                                            <li class="dropdown-item"><button class="btn" @click="deleteMsg(currentContact, msg.id)">Delete Message</button></li>
                                         </ul>
                                         <span class="msgDate"> {{ shortDate(msg) }} </span>
                                     </div>

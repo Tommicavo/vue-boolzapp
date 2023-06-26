@@ -7,7 +7,7 @@ const app = Vue.createApp({
             gptData: {
                 apiUrl: "https://api.openai.com/v1/chat/completions",
                 model: "gpt-3.5-turbo",
-                apiKey: "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",
+                apiKey: "xxx",
                 temperature: 0.5
             },
             newMessage: "",
@@ -217,6 +217,7 @@ const app = Vue.createApp({
             return this.contacts.find(contact => contact.id === this.currentId);
         },
         openedChat() {
+            if (!this.currentContact) return null;
             return this.currentContact.messages;
         },
         filteredContacts() {
@@ -228,6 +229,7 @@ const app = Vue.createApp({
             return this.newMessage.length;
         },
         nextMsgId() {
+            if (!this.openedChat) return null;
             return this.openedChat.length + 1;
         }
     },
@@ -299,23 +301,22 @@ const app = Vue.createApp({
             return `img/avatar${avatar}.jpg`;
         },
         getLastMsg(contact) {
+            if (!contact.messages.length) return null;
             return contact.messages[contact.messages.length - 1].message;
         },
         getLastMsgDate(contact) {
+            if (!contact.messages.length) return null;
             return contact.messages[contact.messages.length - 1].date;
         },
         shortDate(msg) {
             return msg.date.substring(11, 16);
         },
         lastSeen(contact) {
+            if (!contact.messages.length) return null;
             return this.getLastMsgDate(contact).substring(11, 16);
         },
-        deleteMsg(contactId, msgId) {
-            this.contacts.forEach(contact => {
-                if (contact.id === contactId) {
-                    contact.messages = contact.messages.filter(msg => msg.id !== msgId);
-                }
-            })
+        deleteMsg(contact, msgId) {
+            contact.messages = contact.messages.filter(msg => msg.id !== msgId);
         }
     },
     created() {
@@ -324,4 +325,3 @@ const app = Vue.createApp({
 });
 
 app.mount("#root");
-
